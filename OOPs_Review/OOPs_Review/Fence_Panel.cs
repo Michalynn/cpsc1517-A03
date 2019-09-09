@@ -27,7 +27,7 @@ namespace OOPs_Review
         // The property syntax does NOT allow for a paramerter.
 
 
-        //Auto Implemented Property
+        //Auto Implemented Property//
         //This style does NOT need a provate data member
         //the system will create an internal data member of the
         //       rdt specified in the property definition
@@ -47,7 +47,7 @@ namespace OOPs_Review
             set
             {
                 //validation of data
-                //throw exception is invalid
+                //throw exception; is invalid
                 if (value > 0.0 && value <= 8.0)//greater than Zero //Less than or equal to 8.0
                 {
                     _Height = value;
@@ -60,7 +60,7 @@ namespace OOPs_Review
         }
         public double Width { get; set; }
 
-        //Fully Implemented Property
+        //Fully Implemented Property//
         //this style NEEDS a PRIVATE data member (need to code one)
         //the private data member will store the incoming data value
         //Usually, this form of property is used when 
@@ -101,6 +101,28 @@ namespace OOPs_Review
         //  a) data is missing: null
         //  b) data is present ans is of the right datatype
         public double? Price { get; set; }
+
+        //Constructors//
+        //either you code your constructors or you OMIT your
+        //  constructors
+        //If you OMIT constructors then the system will initialize
+        //  your data memebers to the natural system defaults for
+        //  that data member datatype
+        //If you code any constructor, you are responsible for coding
+        //  ALL constructors to be used by this class
+
+        //Default//
+        //Stimulates the system initalization of your data
+        //defaults executes on a: new Fence_Panel();
+        public Fence_Panel()
+        {
+            //nothing in it; optionally you can override the system values with your 
+            //  OWN values
+            Height = 6.0;
+            Width = 8.0;
+            //The remainder of your data values would be the system values
+            //Other feilds can be blank//
+        }
 
     }
 }
