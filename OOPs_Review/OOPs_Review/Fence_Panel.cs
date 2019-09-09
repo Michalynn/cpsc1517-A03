@@ -7,11 +7,100 @@ using System.Threading.Tasks;
 namespace OOPs_Review
 {
 
-    //by default all classes are PRIVATE
+    //by default all classes are PRIVATE (can't be used by anyone else)
     //for this to be used by an outside user
     //  you MUST alter the permission for this class
     //  you WILL use public
+
+    //Object in a seperate class; incapsulate
     public class Fence_Panel
     {
+        // Properties //
+        // a property is associated with a single piece of data
+        // a property has two sub-components
+        //  get: returns a value to the calling client (outside user)
+        //  set: recieves a value from the calling client
+        //      a keyword "value" is used to hold the incoming
+        //          data to the property
+        // the property has a "return" datatype (rdt) which specifies
+        //          the type of data (type; datatype) allowed 
+        // The property syntax does NOT allow for a paramerter.
+
+
+        //Auto Implemented Property
+        //This style does NOT need a provate data member
+        //the system will create an internal data member of the
+        //       rdt specified in the property definition
+        //public double Height { get; set; } //what about negative numbers???
+
+        //Assuming you wish to validate your data, then you should be using
+        //  a fully implemented property
+        //example: Height must have a positive non-zero value
+        //         Height must not be greater than 8 feet
+        private double _Height;
+        public double Height
+        {
+            get
+            {
+                return _Height;
+            }
+            set
+            {
+                //validation of data
+                //throw exception is invalid
+                if (value > 0.0 && value <= 8.0)//greater than Zero //Less than or equal to 8.0
+                {
+                    _Height = value;
+                }
+                else
+                {
+                    throw new Exception("Invalid Height.");
+                }
+            }
+        }
+        public double Width { get; set; }
+
+        //Fully Implemented Property
+        //this style NEEDS a PRIVATE data member (need to code one)
+        //the private data member will store the incoming data value
+        //Usually, this form of property is used when 
+        //      additional coding is required for the incoming data
+        //      such as: Validation of the data
+
+        //EXAMPLE: the string of data CAN NOT be an empty string 
+        //      (can be null/numeric; one or the other)
+        private string _Style; //underscore is the data member
+
+        public string Style
+        {
+            //the keyword "value" holds the incoming data to
+            //  the property
+            get
+            {
+                //returns the stored data value
+                return _Style;
+            }
+            set
+            {
+                //stores the incoming data in "value" to the
+                //  private data member for storage
+                if (string.IsNullOrEmpty(value))
+                {
+                    _Style = null;
+                }
+                else
+                {
+                    _Style = value;
+                }//EndOfIF
+
+            }//ENDOfSet
+        }//EOP String
+
+        //nullable numeric property for a double
+        //there are only TWO possibilities
+        //  a) data is missing: null
+        //  b) data is present ans is of the right datatype
+        public double? Price { get; set; }
+
     }
 }
