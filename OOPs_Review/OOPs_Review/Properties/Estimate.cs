@@ -14,9 +14,25 @@ namespace OOPsReview
         public double LinearLength { get; set; }
 
         //Panel is a variable of datatype FencePanel
-        public FencePanel Panel { get; set; }
+        public Fence_Panel Panel { get; set; }
 
         public List<Gate> Gates { get; set; }
+
+        public Estimate() //nothing in the brackets
+        {
+            //this constructor emulates the system constructor
+        }
+
+        //greedie constructor
+        public Estimate(double linearlength, Fence_Panel panel, List<Gate> gates)//no price
+        {
+            LinearLength = linearlength;
+            Panel = panel;
+            Gates = gates;
+
+            //optional
+            CalculatePrice();
+        }
 
         public double CalculatePrice()
         {

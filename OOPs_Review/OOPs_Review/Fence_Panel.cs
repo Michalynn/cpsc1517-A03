@@ -11,7 +11,7 @@ namespace OOPsReview
     //   you must alter the permission for this class
     //   you will use public
 
-    public class FencePanel
+    public class Fence_Panel
     {
         //Properties
         //a property is associate with a single piece of data
@@ -112,7 +112,7 @@ namespace OOPsReview
         //Default
         //simulates the system initialization of your data
         //default executes on a : new FencePanel();
-        public FencePanel()
+        public Fence_Panel()
         {
             //optionally you can override the system values with your
             //   own values
@@ -124,7 +124,7 @@ namespace OOPsReview
         //Greedie
         //the constructor has a list of parameters which will receive
         //    an argument value for each property in the class
-        public FencePanel(double height, double width, string style, double? price)
+        public Fence_Panel(double height, double width, string style, double? price)
         {
             Height = height;
             Width = width;
