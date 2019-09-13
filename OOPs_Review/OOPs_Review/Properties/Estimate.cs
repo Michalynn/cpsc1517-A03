@@ -4,28 +4,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OOPs_Review.Properties
+namespace OOPsReview
 {
     public class Estimate
     {
         public double TotalPrice { get; private set; }
 
-        //"LinearLength" is a variable of the datatype "double"
+        //LinearLength is a variable of datatype double
         public double LinearLength { get; set; }
 
-        //"Panel" is the variable of the datatype "Fence_Panel"
-        public Fence_Panel Panel {get;set;}
+        //Panel is a variable of datatype FencePanel
+        public FencePanel Panel { get; set; }
 
-        public List<Fence_Gate> Gates { get; set; } //need conection from the other class "Fence_Gate"
+        public List<Gate> Gates { get; set; }
 
         public double CalculatePrice()
         {
-            //assuming the Panel and Gate instances exists and are correct
+            //assuming the Panel and Gate instances exist and are correct
             //there is no validation inside this example
 
 
             double numberofpanels = Panel.EstimatedNumberOfPanels(LinearLength);
-            if ((int)(numberofpanels * 10) > ((int)numberofpanels * 10))
+            if ((int)(numberofpanels * 10.0) > ((int)numberofpanels * 10))
             {
                 numberofpanels = (int)numberofpanels + 1;
             }
