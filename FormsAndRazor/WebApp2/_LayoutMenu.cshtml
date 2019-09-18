@@ -9,9 +9,9 @@
     <script src="~/Scripts/bootstrap.js"></script>
 </head>
 <body>
+    @RenderPage("~/_Menu.cshtml")
     <div>
         @RenderSection("banner", required: false)
-
     </div>
     @RenderBody()
 </body>

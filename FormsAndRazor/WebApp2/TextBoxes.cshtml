@@ -1,0 +1,39 @@
+﻿@{
+    Page.Title = "TextBoxes Demo";
+    Layout = "~/_LayoutMenu.cshtml";
+
+    var controlnamevariable = Request.Form["controlname"];
+}
+
+<div>
+    @if (IsPost)
+    {
+        <p>You've entered &gt;@controlnamevariable &lt;</p>
+    }
+    <form id="theform" action="" method="post">
+        <div class="form-group">
+            <label for="controlnameid">FieldLabel:</label>
+
+            <input type="text"
+                   class="form-control"
+                   name="controlname" 
+                   id="controlnameid"
+                   placeholder="enter some data" 
+                   />
+        </div>
+        <div class="form-group">
+            <button type="submit"
+                    name="formbutton"
+                    id="formbuttonid"
+                    class="btn btn-primary"
+                    value="Submit">
+                Press Me
+            </button>
+
+
+        </div>
+
+
+
+    </form>
+</div>
