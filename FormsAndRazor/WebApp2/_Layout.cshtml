@@ -2,17 +2,20 @@
 <html lang="en">
 <head>
     <title>@Page.Title</title>
-    @RenderSection("head", required: false)
 
-    <script src="~/Scripts/jquery-3.3.1.js"></script>
+
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <script src="~/Scripts/bootstrap.js"></script>
+    @RenderSection("head", required: false)
 </head>
 <body>
-    <div>
-        @RenderSection("banner", required: false)
-
+    <div class="container-fluid">
+        <div class="jumbotron">
+            @RenderSection("banner", required: false)
+            @RenderPage("~/_Menu.cshtml")
+        </div>
+        @RenderBody()
     </div>
-    @RenderBody()
 </body>
 </html>
