@@ -125,6 +125,8 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="RadioButtons.cshtml" />
+    <Content Include="CheckBoxes.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -140,7 +142,6 @@
     <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="Web.config" />
     <Content Include="_Menu.cshtml" />
-    <Content Include="_LayoutMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />

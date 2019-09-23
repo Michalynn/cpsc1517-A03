@@ -1,0 +1,65 @@
+﻿@{
+    Layout = "~/_Layout.cshtml";
+    Page.Title = string.Format("Razor - {0}", "CheckBoxes");
+    string choices = "";
+}
+@section banner{
+    <h1>CheckBoxes On Form</h1>
+    
+}
+
+@if (true)
+{
+    //delay retrieving your data until the page has actually be posted back
+    //IF  you plan to work with this style AND you used the variables outside of the
+    //if(...) structure
+    //YOU MUST predefine the global variables in your top coding block
+    choices = Request.Form["GameGroup"];
+    //choices will be a coma delimiter list of strings (similar to array)
+    if (string.IsNullOrEmpty(choices))
+    {
+        <p><span style="color:firebrick">Make at least ONE choice from the list</span></p>
+    }
+    else
+    {
+        //use .Split(delimiter) method to spilt up the returned string
+        //the delimiter is a character that seperates the string
+        //      into smaller components
+        //therefore each choice will be seperated by a ','
+        //use the foreach loop to traverse your list of unknown # of choices
+        <p>
+            I see you like to use the following platforms:
+            <ul>
+            @foreach (var platform in choices.Split(','))
+            {
+                <li>@platform</li> 
+            }
+            </ul>
+        </p>
+       
+    }
+
+}
+
+<form id="theform" method="post">
+    <div class="row">
+        <div class="offset-1">
+            <label id="GameGrouplbl">Select your favorite gaming platform(s)</label><br /><br />
+            <input type="checkbox" id="GameGroup" name="GameGroup" value="PS4" />PS4 <br />
+            <input type="checkbox" id="GameGroup" name="GameGroup" value="PC" />Computer <br />
+            <input type="checkbox" id="GameGroup" name="GameGroup" value="XBOX one" />XBOX One <br />
+            <input type="checkbox" id="GameGroup" name="GameGroup" value="Switch" />Switch <br />
+            <input type="checkbox" id="GameGroup" name="GameGroup" value="CellPhone" />Cell Phone <br />
+            <input type="checkbox" id="GameGroup" name="GameGroup" value="WII" />WII <br /><br />
+
+            <button type="submit" id="thebutton" name="thebutton" value="submit"class="btn btn-primary">
+            Submit
+            </button>
+          
+
+        </div>
+    </div>
+
+</form>
+
+
