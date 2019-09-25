@@ -1,0 +1,68 @@
+﻿@{
+    Layout = "~/_Layout.cshtml";
+    Page.Title = string.Format("Razor - {0}", "DropDownlist");
+}
+
+
+@section banner{
+    
+    <h1>DropDownList (Select tag) on Form</h1>    
+       
+}
+@if (IsPost)
+{
+    var choice = Request.Form["CodingSamples"];
+    switch (choice.ToUpper())
+    {
+        case "TEXTBOX":
+            {
+                <!-- to go to another page: use the ".redirect(name inside)" Method
+                    of the response opject-->
+                Response.Redirect("TextBoxes.cshtml");
+                break;
+            }
+        case "RADIOBUTTON":
+            {
+                Response.Redirect("RadioButtons.cshtml");
+                break;
+            }
+        case "CHECKBOX":
+            {
+                Response.Redirect("CheckBoxes.cshtml");
+                break;
+            }
+        default:
+            {
+                <p style="color:firebrick">To view a sample: make a selection from the sample list</p>
+                break;
+            }
+    }
+}
+else
+{
+
+}
+
+
+<form id="theform" method="post">
+    <div class="row">
+        <div class="offset-1">
+            <label id="lblCodingSamples">Select the sample to view:</label>&nbsp;&nbsp;
+            <!--The select tag is used in HTML to creat a dropdown lost
+            each item in the DDL is specified by using an option tag
+            the option tag will have a value attribute, This is the return value
+            between the open and closed option tag is the visible text to be read
+        to set an item (chooen item), use the attribute select within
+        the option tag-->
+            <select id="CodingSamples" name="CodingSamples">
+                <option value="">select ...</option>
+                <option value="TextBox">TextBox</option>
+                <option value="RadioButton">RadioButton</option>
+                <option value="CheckBox">CheckBox</option>
+            </select>&nbsp;&nbsp;
+            <button type="submit" id="theButton" name="theButton" value="submit" class="btn btn-primary">
+                Go To ...
+            </button>
+        </div>
+    </div>
+</form>

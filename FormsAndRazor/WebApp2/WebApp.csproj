@@ -127,6 +127,7 @@
     <Content Include="Content\bootstrap-grid.css.map" />
     <Content Include="RadioButtons.cshtml" />
     <Content Include="CheckBoxes.cshtml" />
+    <Content Include="DropDownlist.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -142,6 +143,7 @@
     <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="Web.config" />
     <Content Include="_Menu.cshtml" />
+    <Content Include="WebConnectionString.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
