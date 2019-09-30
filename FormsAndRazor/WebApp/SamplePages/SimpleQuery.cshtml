@@ -27,9 +27,9 @@
     //   in the command
     //placeholders are index (start at 0)
     //your query can be coded on several phyiscal lines
-    var sqlcommand = "SELECT RegionID, RegionDescription "
-                    + "FROM Region "
-                    + "WHERE RegionID = @0";
+    var sqlcommand = @"SELECT RegionID, RegionDescription 
+                     FROM Region 
+                     WHERE RegionID = @0";
 
     //execute the query
     //there are 3 ways to execute your query command DEPENDING on the expect result

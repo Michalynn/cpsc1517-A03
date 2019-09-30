@@ -1,0 +1,90 @@
+﻿@{
+    Layout = "~/_Layout.cshtml";
+    Page.Title = string.Format("Razor - {0}", "DDL Query");
+
+    var db = Database.Open("NWDB");
+    var sqlquery = @"SELECT CategoryID, CategoryName
+            FROM Categories
+            ORDER BY CategoryName";
+    var ddlinfo = db.Query(sqlquery);
+}
+
+@section banner {
+    <h1>DropDownList Selection Query</h1>
+}
+
+@if (IsPost)
+{
+    //what is selected
+    var choice = Request.Form["CategoryList"];
+    if (choice.Equals("0"))
+    {
+        <p style="color:darkslateblue">Make a selection to view desired products</p>
+    }
+    else
+    {
+        //optionally
+        //one check if products are for selection
+        //      act on it
+        //selected from categoryID
+        var productquery = @"SELECT ProductID
+                             FROM Products
+                             WHERE CategoryID = @0";
+        var productinfo = db.Query(productquery, choice);
+        if (productinfo.Count() == 0)
+        {
+            <p style="color:darkslateblue"> No products for the selected category</p>
+        }
+        else
+        {
+            //how to pass a value from page to page
+            //depending on the security aspect of the data
+            //  you will pass it internally or externally
+            //our CategoryID is NOT case sensitive
+            //The "Get" method will display YOUR data value on the URL
+            //syntax:  pagename.cshtml?labelname=value{&labelname=value ....(and so on if more)}
+            //use the: Response.Redirect() to go to another page
+            Response.Redirect("WebGridDisplay.cshtml?cid=" + choice);
+
+        }//endof3thrdIF
+    }//end2ndIF
+
+}//end1stIF
+else
+{
+    if (ddlinfo.Count() == 0)
+    {
+        <p style="color:firebrick">Warning: there are no categories on file.</p>
+    }
+    else
+    {
+
+    }
+}
+
+<form id="theform" method="post">
+    <div class="offset-3">
+        <label id="lblCategoryList" for="CategoryList">Select a category:</label>
+        &nbsp;&nbsp;
+        <select id="CategoryList" name="CategoryList">
+            <option value="0">select ...</option>
+            @foreach (var item in ddlinfo)
+            {
+                //loop through the collection of records in ddlinfo
+                //create a line in the DDL for each item in the collection
+                //the value attribute will be set to the CategoryID
+                //the display text will be set to the CategoryName
+                //REMINDER: accessing data on a record can be done
+                //  a) using the index:  item[index]
+                //  b) using the property name:  item.CategoryName (option b is easier)
+
+                <option value="@item.CategoryID">@item.CategoryName</option>
+            }
+        </select>
+        &nbsp;&nbsp;
+        <button type="submit" id="theButton" name="theButton"
+                class="btn btn-primary" value="sumbit">
+            Fetch Products for...
+        </button>
+    </div>
+</form>

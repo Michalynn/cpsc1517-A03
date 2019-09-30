@@ -1,0 +1,47 @@
+﻿@{
+    Layout = "~/_Layout.cshtml";
+    Page.Title = string.Format("Razor - {0}", "WebGrid Display");
+
+    //capture the passed value(s) to this page
+    // the "Get" method uses:   Request.QueryString["parameterlabel"]
+
+    var cid = Request.QueryString["cid"];
+
+    //good practice
+    //check that a value was actually passed (dida get the data)
+    if (string.IsNullOrEmpty(cid))
+    {
+        Response.Redirect("MultiRecordQuery.cshtml");
+    }
+
+    var db = Database.Open("NWDB");
+    var sqlquery = @"SELECT ProductID,ProductName, UnitPrice, UnitsInStock,
+                            Discontinued
+                     FROM Products
+                     WHERE CategoryID = @0
+                     ORDER BY ProductName";
+    var productinfo = db.Query(sqlquery, cid);
+
+
+    //deeeeeeemo QueryValue
+    //get the categoryname
+    var catquery = @"SELECT CategoryName
+                     FROM Categories
+                     WHERE CategoryID = @0";
+    var categoryname = db.QueryValue(catquery, cid);
+
+    //how to display multiple rows containing multiple colums
+    //create an instance of the WebGrid class
+    //Assign the record collection to the instance when  
+    //  the instance is created
+    var gridinstance = new WebGrid(productinfo);
+}
+
+@section banner {
+    <h1>WebGrid Display</h1>
+}
+
+<div class="offset-1">
+<span style="font-size:x-large"><strong>Products for @categoryname</strong></span>
+@gridinstance.GetHtml()
+</div>
