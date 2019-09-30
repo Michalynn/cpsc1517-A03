@@ -1,0 +1,64 @@
+﻿@{
+    Layout = "~/_Layout.cshtml";
+    Page.Title = string.Format("Razor - {0}", "DropdownList");
+}
+
+@section banner {
+    <h1>DropDownList (Select tag) on Form</h1>
+}
+
+@if (IsPost)
+{
+    var choice = Request.Form["CodingSamples"];
+    switch (choice.ToUpper())
+    {
+        case "TEXTBOX":
+            {
+                //to go to another page use the .Redirect("pagename") method
+                //   of the Response object
+                Response.Redirect("BasicForm.cshtml");
+                break;
+            }
+        case "RADIOBUTTON":
+            {
+                Response.Redirect("RadioButtons.cshtml");
+                break;
+            }
+        case "CHECKBOX":
+            {
+                Response.Redirect("CheckBoxes.cshtml");
+                break;
+            }
+        default:
+            {
+                <p style="color:firebrick">To view a sample, make a selection from the sample list.</p>
+                break;
+            }
+    }
+}
+else
+{
+
+}
+
+<form id="theform" method="post">
+    <div class="row">
+        <div class="offset-1">
+            <label id="lblCodingSamples">Select the sample to view:</label>&nbsp;&nbsp;
+            <!--the select tag is used in html to create the dropdownlist
+                each item in the ddl is specified using on option tag
+                the option tag will have a value attribute, this is the returned value
+                between the open and close of the option tag is the visible text to be read
+                to set an item as the choosen item, use the attribute selected within the
+                    option tag-->
+            <select id="CodingSamples" name="CodingSamples">
+                <option value="">select ...</option>
+                <option value="TextBox">TextBox</option>
+                <option value="RadioButton">RadioButton</option>
+                <option value="CheckBox">CheckBox</option>
+            </select>&nbsp;&nbsp;
+            <button type="submit" id="theButton" name="theButton" value="submit"
+                    class="btn btn-primary">Go To ...</button>
+        </div>
+    </div>
+</form>

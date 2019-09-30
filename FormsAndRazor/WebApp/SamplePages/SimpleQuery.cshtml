@@ -1,0 +1,124 @@
+﻿@{
+    Layout = "~/_Layout.cshtml";
+    Page.Title = string.Format("Razor - {0}", "Simple Query");
+    //output variables
+    //needed on the form
+    string regionid = "";
+    string regiondescription = "";
+
+    var regionarg = Request.Form["RegionArg"];
+    var thebutton = Request.Form["theButton"];
+    int inputarg = 0;
+    //first time the page is used, NO form has yet to
+    //   be created; therefore the input variables will
+    //   be null.
+    if (string.IsNullOrEmpty(regionarg) ||
+        !int.TryParse(regionarg,out inputarg))
+    {
+        regionarg = "0";
+    }
+
+    //open a connection to the database
+    //use the connection string name attribute value
+    var db = Database.Open("NWDB");
+
+    //create a sql query to be executed
+    //the input argument value will be represented by a placeholder
+    //   in the command
+    //placeholders are index (start at 0)
+    //your query can be coded on several phyiscal lines
+    var sqlcommand = "SELECT RegionID, RegionDescription "
+                    + "FROM Region "
+                    + "WHERE RegionID = @0";
+
+    //execute the query
+    //there are 3 ways to execute your query command DEPENDING on the expect result
+    //a) a single row returned  .QuerySingle()
+    //b) 0, 1 or more rows returned .Query()
+    //c) a single value (not a row) returned .QueryValue()
+
+    //we expect a single row
+    //Why? Lookup is by primary key
+    //syntax is .xxxx(commandstring [,list of argument values])
+    //the order of the values in the list of argument values MUST match the order
+    //   expected by the placeholders
+    var results = db.QuerySingle(sqlcommand, regionarg);
+
+
+}
+
+@section banner {
+    <h1>Database PKey Query</h1>
+}
+
+@if (IsPost)
+{
+    if (thebutton.Equals("reset"))
+    {
+        regionid = "";
+        regiondescription = "";
+        regionarg = "";
+    }
+    else
+    {
+        //test for results
+        //the test for results DEPEND on the execution of the command
+        //for a) and c) test for null
+        //for b) test .Count == 0
+
+        if (results == null)
+        {
+            <p>This is no region with the id of @regionarg</p>
+            regionid = "";
+            regiondescription = "";
+        }
+        else
+        {
+            //you can access the data from your results either by
+            //a) index  syntax of xxx[index]
+            //b) by property    syntax of  xxx.PropertyName
+
+            //the datatype of the result item is the return datatype of the Property
+            //the form likes to output --> strings
+            <p>Found</p>
+            regionid = results[0].ToString();
+            regiondescription = results.RegionDescription;
+        }
+    }
+}
+else
+{
+    regionarg = "";  //show the placeholder prompt
+}
+
+<form id="theform" method="post">
+    <div class="row">
+        <div class="col-6">
+            <div class="offset-1">
+                <label id="lblRegionArg">Enter Region ID:</label>&nbsp;&nbsp;
+                <input type="number" id="RegionArg" name="RegionArg"
+                       value="@regionarg" placeholder="region id" 
+                        step="1" min="1"/>
+                <br /><br />
+                <button type="submit" id="theButton" name="theButton"
+                        value="submit" class="btn btn-primary">
+                    Fetch
+                </button>&nbsp;&nbsp;
+                <button type="submit" id="theButton" name="theButton"
+                        value="reset" class="btn btn-light">
+                    Reset
+                </button>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="offset-1">
+                <label id="lblRegionID">Region ID:</label>&nbsp;&nbsp;
+                <label id="RegionID">@regionid</label>
+                <br /><br />
+                <label id="lblRegionDescription">Region Name:</label>&nbsp;&nbsp;
+                <input type="text" id="RegionDescription" name="RegionDescription"
+                       value="@regiondescription" readonly />
+            </div>
+        </div>
+    </div>
+</form>
