@@ -2,8 +2,7 @@
     Layout = "~/_Layout.cshtml";
     Page.Title = string.Format("Razor - {0}", "CRUD - Insert");
 
-    //global necessary variables
-
+    //is there any necessary global variables
     var productname = "";
     var supplierid = "";
     var categoryid = "";
@@ -12,7 +11,6 @@
     var unitsinstock = "";
     var unitsonorder = "";
     var reorderlevel = "";
-    var thebutton = "";
 
     //obtain two lists: SupplierList and CategoryList
     var db = Database.Open("NWDB");
@@ -33,21 +31,21 @@ Order by CategoryName";
 
 @if (IsPost)
 {
-    //when you have multiple buttons, a good practice is to determine
-    //    what action to do for the press button FIRST!
-    thebutton = Request.Form["FormButton"];
+    // obtain the data from the controls
     productname = Request.Form["ProductName"];
-    quantityperunit = Request.Form["QuantityPerUnit"];
     supplierid = Request.Form["SupplierList"];
     categoryid = Request.Form["CategoryList"];
+    quantityperunit = Request.Form["QuantityPerUnit"];
     unitprice = Request.Form["UnitPrice"];
     unitsinstock = Request.Form["UnitsInStock"];
     unitsonorder = Request.Form["UnitsOnOrder"];
     reorderlevel = Request.Form["ReorderLevel"];
+    var thebutton = Request.Form["FormButton"];
 
+    //when you have multiple buttons, a good practice is to determine
+    //    what action to do for the press button FIRST!
     if (thebutton.Equals("Clear"))
     {
-
         productname = "";
         supplierid = "";
         categoryid = "";
@@ -56,44 +54,48 @@ Order by CategoryName";
         unitsinstock = "";
         unitsonorder = "";
         reorderlevel = "";
-
     }
     else
     {
+        //add button
         //validate data
-        //data good
+
+        //test validation
+        //bad
+        //good
         try
         {
             //connect to database
-            //(done above)
+            //  done above
             //create insert command
-            var inscommand = @"INSERT INTO Products (ProductName, SupplierID,
-        CategoryID, QuantityPerUnit, UnitPrice, UnitsInStock,
-        UnitsOnOrder, ReorderLevel, Discontinued)
-       VALUES(@0, @1, @2, @3, @4, @5, @6, @7, 0)";
+            var inscommand = @"INSERT INTO Products (ProductName, SupplierID, CategoryID,
+                QuantityPerUnit, UnitPrice, UnitsInStock,
+                UnitsOnOrder, ReorderLevel, Discontinued)
+        VALUES (@0, @1, @2, @3, @4, @5, @6, @7, 0)";
             //execute the command
             db.Execute(inscommand, productname,
-                            string.IsNullOrEmpty(supplierid) ? null : supplierid,
-                            string.IsNullOrEmpty(categoryid) ? null : categoryid,
-                            string.IsNullOrEmpty(quantityperunit) ? null : quantityperunit,
-                            string.IsNullOrEmpty(unitprice) ? null : unitprice,
-                            string.IsNullOrEmpty(unitsinstock) ? null : unitsinstock,
-                            string.IsNullOrEmpty(unitsonorder) ? null : unitsonorder,
-                            string.IsNullOrEmpty(reorderlevel) ? null : reorderlevel).ToString();
-            //message to the user
-            <div class="col-12 text-center well">
-                <p style="color:green">Product has been add.</p>
+                        supplierid.Equals("0") ? null : supplierid,
+                        categoryid.Equals("0") ? null : categoryid,
+                        string.IsNullOrEmpty(quantityperunit) ? null : quantityperunit,
+                        string.IsNullOrEmpty(unitprice) ? null : unitprice,
+                        string.IsNullOrEmpty(unitsinstock) ? null : unitsinstock,
+                        string.IsNullOrEmpty(unitsonorder) ? null : unitsonorder,
+                        string.IsNullOrEmpty(reorderlevel) ? null : reorderlevel);
+            <div class="col-12 text-center">
+                <p style="color:green">
+                    Produce has been added.
+                </p>
             </div>
-
         }
         catch (Exception ex)
         {
             <div class="col-12 text-center">
-                <p style="color:firebrick">Error in processing: @ex.Message</p>
+                <p style="color:firebrick; font-size:large">
+                    Processing error: @ex.Message
+                </p>
             </div>
         }
     }
-
 
 }
 else
@@ -124,13 +126,15 @@ else
                 <option value="0">select supplier...</option>
                 @foreach (var item in supplierlist)
                 {
-                    //by default the 1st option is the selected item when
-                    //   the control is created
-                    //to retain the selected value, you need to have an option
-                    //   item that has its attribute selected within the option tag
+                    //when the select control is created and loading
+                    //   by default the 1st option tag is shown as the selected option
+                    //to retain a previous selected value, you need to test
+                    //   the previous selected value against the current item that
+                    //   is being used to create the option line
+                    //if the previoous selected value equals the current item then
+                    //   add the selected attribute to your option tag
                     if (supplierid == item.SupplierID.ToString())
                     {
-                        //this was the last selected ddl item
                         <option value="@item.SupplierID" selected>@item.CompanyName</option>
                     }
                     else
