@@ -5,6 +5,8 @@
          IF the siteMapNode is self closing; there is no sub menu items-->
     <siteMapNode url="~/Default.aspx" title="Home"  description="home page starting page of app" />
     <siteMapNode url="~/SamplePages/HelloWorld.aspx" title="Hello World"  description="" />
+    <siteMapNode url="~/SamplePages/JobApplication.aspx" title="Job Application"  description="" />
+    <siteMapNode url="~/SamplePages/ContestEntry.aspx" title="Contest Entry"  description="" />
     <!-- dropdown menu
          the start/end of a drop dowm menu use SEPARATE open and closing tags for your siteMapNode
          the open tag can have a Url that points to its own page
