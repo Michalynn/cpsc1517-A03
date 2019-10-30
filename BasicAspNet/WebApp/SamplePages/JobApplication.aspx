@@ -55,7 +55,13 @@
         <div class="col-sm-6">
             <asp:Button ID="Submit" runat="server" Text="Submit" OnClick="Submit_Click" />&nbsp;&nbsp;
             <asp:Button ID="Clear" runat="server" Text="Clear" height="26px" width="63px" OnClick="Clear_Click" /><br />
-            <asp:Label ID="Message" runat="server" ></asp:Label>
+            <asp:Label ID="Message" runat="server" ></asp:Label><br /><br />
+            <asp:Label ID="label10" runat="server" Text="Current Job Application:"></asp:Label><br /><br />
+            <asp:GridView ID="JobApplicationList" runat="server">
+                <EmptyDataTemplate>
+                    No Data to display
+                </EmptyDataTemplate>
+            </asp:GridView> 
         </div>
     </div>
     <script src="../Scripts/bootwrap-freecode.js"></script>
