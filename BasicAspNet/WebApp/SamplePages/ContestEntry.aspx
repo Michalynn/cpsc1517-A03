@@ -17,6 +17,91 @@
         </div>
     </div>
   
+    <%-- Validation Controls --%>
+    <asp:RequiredFieldValidator ID="RequiredFirstName" runat="server" 
+        ErrorMessage="First name is required" Display ="None"
+         ControlToValidate="FirstName" ForeColor="#990000"
+         SetFocusOnError="true">
+    </asp:RequiredFieldValidator>
+
+    <asp:RequiredFieldValidator ID="RequiredLastName" runat="server" 
+        ErrorMessage="Last name is required" Display ="None"
+         ControlToValidate="LastName" ForeColor="#990000"
+         SetFocusOnError="true">
+    </asp:RequiredFieldValidator>
+
+    <asp:RequiredFieldValidator ID="RequiredStreetAddress1" runat="server" 
+        ErrorMessage="Street Address1 is required" Display ="None"
+         ControlToValidate="StreetAddress1" ForeColor="#990000"
+         SetFocusOnError="true">
+    </asp:RequiredFieldValidator>
+
+    <asp:RequiredFieldValidator ID="RequiredCity" runat="server" 
+        ErrorMessage="City is required" Display ="None"
+         ControlToValidate="City" ForeColor="#990000"
+         SetFocusOnError="true">
+    </asp:RequiredFieldValidator>
+
+        <asp:RequiredFieldValidator ID="RequiredPostalCode" runat="server" 
+        ErrorMessage="Postal Code is required" Display ="None"
+         ControlToValidate="PostalCode" ForeColor="#990000"
+         SetFocusOnError="true">
+    </asp:RequiredFieldValidator>
+    <asp:RegularExpressionValidator ID="RegExPostalCode" runat="server" 
+        ErrorMessage="Invaild postal code format (T5L0G0)" Display="None" 
+         ControlToValidate="PostalCode"  ForeColor="#860dff"
+         SetFocusOnError="true"
+        ValidationExpression="[a-zA-Z][0-9][a-zA-Z][0-9][a-zA-Z][0-9]">
+    </asp:RegularExpressionValidator>
+
+        <asp:RequiredFieldValidator ID="RequiredEmailAddress" runat="server" 
+        ErrorMessage="Email is required" Display ="None"
+         ControlToValidate="EmailAddress" ForeColor="#990000"
+         SetFocusOnError="true"
+         ValidationExpression="^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$">
+    </asp:RequiredFieldValidator>
+
+      <asp:RegularExpressionValidator ID="RegExEmailAddress" runat="server" 
+        ErrorMessage="Invaild postal code format (T5L0G0)" Display="None" 
+         ControlToValidate="PostalCode"  ForeColor="#860dff"
+         SetFocusOnError="true">
+    </asp:RegularExpressionValidator>
+
+        <asp:RequiredFieldValidator ID="RequiredCheckAnswer" runat="server" 
+        ErrorMessage="Skill test answer is required is required" Display ="None"
+         ControlToValidate="CheckAnswer" ForeColor="#990000"
+         SetFocusOnError="true">
+    </asp:RequiredFieldValidator>
+
+    <%--<asp:CompareValidator ID="CompareCheckAnswer" runat="server" 
+        ErrorMessage="DataType validation" Display="None"
+        ForeColor="#990000" SetFocusOnError="true"
+        ControlToValidate="CheckAnswer" Operator="DataTypeCheck" Type="Integer">
+
+    </asp:CompareValidator>--%>
+    <asp:CompareValidator ID="CompareCheckAnswer" runat="server" 
+        ErrorMessage="Static Value validation" Display="None"
+        ForeColor="#990000" SetFocusOnError="true"
+        ControlToValidate="CheckAnswer" Operator="Equal" ValueToCompare="15"
+           Type="Integer"> 
+    </asp:CompareValidator>
+
+   <%--  <asp:CompareValidator ID="CompareCheckAnswer" runat="server" 
+        ErrorMessage="Compare to another field validation" Display="None"
+        ForeColor="#990000" SetFocusOnError="true"
+        ControlToValidate="CheckAnswer" Operator="Equal"
+        ControlToCompare="StreetAddress2" Type="Integer"> 
+    </asp:CompareValidator>--%>
+    <asp:RangeValidator ID="RangeSample" runat="server" 
+        ErrorMessage="errormessage" Display="None" ForeColor="#990000" SetFocusOnError="true"
+        ControlToValidate="StreetAddress2" MinimumValue="0" MaximumValue="100" 
+        Type="Integer" />
+    <%-- Display Validation Errors --%>
+    <div class="row">
+        <asp:ValidationSummary ID="ValidationSummary1" runat="server" 
+             HeaderText="Please correct the following concerns and resubmit"
+             CssClass="alert alert-danger" />
+    </div>
     <div class="row">
         <div class ="col-md-6">
             <fieldset class="form-horizontal">

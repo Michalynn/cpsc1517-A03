@@ -9,9 +9,14 @@ namespace WebApp.SamplePages
 {
     public partial class ContestEntry : System.Web.UI.Page
     {
+        public static List<CEntry> Entries;
         protected void Page_Load(object sender, EventArgs e)
         {
             Message.Text = "";
+            if (!Page.IsPostBack)
+            {
+                Entries = new List<CEntry>();
+            }
         }
     }
 }
