@@ -174,7 +174,8 @@
                     <asp:Button ID="Clear" runat="server" Text="Clear" CausesValidation="true" OnClick="Clear_Click"  />
                 </p>
                 <asp:Label ID="Message" runat="server" ></asp:Label><br />
-                <asp:GridView ID="GridViewCEntry" runat="server"></asp:GridView>
+                <asp:GridView ID="EntryList" runat="server">
+                </asp:GridView>
             </div>
         </div>
     </div>
