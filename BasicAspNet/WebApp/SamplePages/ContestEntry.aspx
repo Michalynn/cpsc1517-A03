@@ -58,7 +58,7 @@
         ErrorMessage="Email is required" Display ="None"
          ControlToValidate="EmailAddress" ForeColor="#990000"
          SetFocusOnError="true"
-         ValidationExpression="^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$">
+        
     </asp:RequiredFieldValidator>
 
       <asp:RegularExpressionValidator ID="RegExEmailAddress" runat="server" 
@@ -71,6 +71,7 @@
         ErrorMessage="Skill test answer is required is required" Display ="None"
          ControlToValidate="CheckAnswer" ForeColor="#990000"
          SetFocusOnError="true">
+        <ValidationExpression="^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$">
     </asp:RequiredFieldValidator>
 
     <%--<asp:CompareValidator ID="CompareCheckAnswer" runat="server" 
