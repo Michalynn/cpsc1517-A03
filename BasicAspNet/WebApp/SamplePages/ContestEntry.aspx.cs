@@ -48,36 +48,55 @@ namespace WebApp.SamplePages
                 //no: message
                 //the Term data will NOT be saved
                 //the checkanswer will NOT be saved
-                if (Terms.Checked)
+
+                bool UniqueID = true;
+
+                foreach (CEntry entry in Entries)
                 {
-                    //need a new instance of CEntry
-                    CEntry theEntry = new CEntry();
-                    //need to fill/load the instance
-                    theEntry.FirstName = FirstName.Text;
-                    theEntry.LastName = LastName.Text;
-                    theEntry.StreetAddress1 = StreetAddress1.Text;
-                    theEntry.StreetAddress2 = string.IsNullOrEmpty(StreetAddress2.Text) ? 
-                                              null: StreetAddress2.Text;
-                    theEntry.City = City.Text;
-                    theEntry.Province = Province.SelectedValue;
-                    theEntry.PostalCode = PostalCode.Text;
-                    theEntry.EmailAddress = EmailAddress.Text;
+                    if (FirstName.Text == entry.FirstName)
+                    {
+                        UniqueID = false;
+                    }
+                }
 
-                    //need to add the instance to my collection
-                    Entries.Add(theEntry);
 
-                    //Entries.Add(new CEntry(FirstName.Text,
-                    //    LastName.Text,
-                    //    StreetAddress1.Text,
-                    //    string.IsNullOrEmpty(StreetAddress2.Text) ? null : StreetAddress2.Text,
-                    //   Province.SelectedValue, PostalCode.Text, EmailAddress.Text));
-                    //need to display the collection
-                    EntryList.DataSource = Entries;
-                    EntryList.DataBind();
+                if (!UniqueID)
+                {
+                    //Error message displays somewhere
                 }
                 else
                 {
-                    Message.Text = "You did not agree to term. Entry Rejected";
+                    if (Terms.Checked)
+                    {
+                        //need a new instance of CEntry
+                        CEntry theEntry = new CEntry();
+                        //need to fill/load the instance
+                        theEntry.FirstName = FirstName.Text;
+                        theEntry.LastName = LastName.Text;
+                        theEntry.StreetAddress1 = StreetAddress1.Text;
+                        theEntry.StreetAddress2 = string.IsNullOrEmpty(StreetAddress2.Text) ?
+                                                  null : StreetAddress2.Text;
+                        theEntry.City = City.Text;
+                        theEntry.Province = Province.SelectedValue;
+                        theEntry.PostalCode = PostalCode.Text;
+                        theEntry.EmailAddress = EmailAddress.Text;
+
+                        //need to add the instance to my collection
+                        Entries.Add(theEntry);
+
+                        //Entries.Add(new CEntry(FirstName.Text,
+                        //    LastName.Text,
+                        //    StreetAddress1.Text,
+                        //    string.IsNullOrEmpty(StreetAddress2.Text) ? null : StreetAddress2.Text,
+                        //   Province.SelectedValue, PostalCode.Text, EmailAddress.Text));
+                        //need to display the collection
+                        EntryList.DataSource = Entries;
+                        EntryList.DataBind();
+                    }
+                    else
+                    {
+                        Message.Text = "You did not agree to term. Entry Rejected";
+                    }
                 }
             }
         }

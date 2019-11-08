@@ -47,31 +47,33 @@
          ControlToValidate="PostalCode" ForeColor="#990000"
          SetFocusOnError="true">
     </asp:RequiredFieldValidator>
-    <asp:RegularExpressionValidator ID="RegExPostalCode" runat="server" 
-        ErrorMessage="Invaild postal code format (T5L0G0)" Display="None" 
-         ControlToValidate="PostalCode"  ForeColor="#860dff"
+    <asp:RegularExpressionValidator 
+        ID="RegExPostalCode" runat="server" 
+        ErrorMessage="Invaild postal code format (T5L0G0)" 
+        Display="None" ForeColor="#860dff"
+        ControlToValidate="PostalCode"  
          SetFocusOnError="true"
-        ValidationExpression="[a-zA-Z][0-9][a-zA-Z][0-9][a-zA-Z][0-9]">
+        ValidationExpression= "[a-zA-Z][0-9][a-zA-Z][0-9][a-zA-Z][0-9]" >
     </asp:RegularExpressionValidator>
 
         <asp:RequiredFieldValidator ID="RequiredEmailAddress" runat="server" 
         ErrorMessage="Email is required" Display ="None"
          ControlToValidate="EmailAddress" ForeColor="#990000"
-         SetFocusOnError="true"
+         SetFocusOnError="true">
         
     </asp:RequiredFieldValidator>
 
-      <asp:RegularExpressionValidator ID="RegExEmailAddress" runat="server" 
+<%--      <asp:RegularExpressionValidator ID="RegExEmailAddress" runat="server" 
         ErrorMessage="Invaild postal code format (T5L0G0)" Display="None" 
          ControlToValidate="PostalCode"  ForeColor="#860dff"
          SetFocusOnError="true">
-    </asp:RegularExpressionValidator>
+    </asp:RegularExpressionValidator>--%>
 
         <asp:RequiredFieldValidator ID="RequiredCheckAnswer" runat="server" 
         ErrorMessage="Skill test answer is required is required" Display ="None"
          ControlToValidate="CheckAnswer" ForeColor="#990000"
-         SetFocusOnError="true">
-        <ValidationExpression="^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$">
+         SetFocusOnError="true"
+         ValidationExpression="^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$">
     </asp:RequiredFieldValidator>
 
     <%--<asp:CompareValidator ID="CompareCheckAnswer" runat="server" 
