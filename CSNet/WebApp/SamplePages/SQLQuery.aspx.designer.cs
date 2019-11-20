@@ -10,7 +10,7 @@
 namespace WebApp.SamplePages {
     
     
-    public partial class SQLQuery {
+    public partial class SqlQuery {
         
         /// <summary>
         /// Label1 control.

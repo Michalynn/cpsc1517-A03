@@ -20,10 +20,5 @@ namespace NorthwindSystem.Data
         public string Description { get; set; }
         public byte[] Picture { get; set; }
         public string PictureMimeType { get; set; }
-
-
-
-
-
     }
 }

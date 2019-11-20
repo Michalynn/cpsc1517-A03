@@ -15,35 +15,35 @@ namespace NorthwindSystem.BLL
 {
     public class RegionController
     {
-        //Entity Framework realizes that certain requests for data are common
-        //Entity Framework has created methods that can be called to do the common
+        //EntityFramework realizes that certain requests for data are common
+        //EntityFramework has created methods that can be called to do the common
         //requests
 
-        //method #1 that WILL return all region records
+        //method that will return all region records
         public List<Region> Regions_List()
         {
-            //need to connect to the context class, that will handle the data request
+            //connect to the context class that will handle the data request
             //most of CRUD requires using a transaction
-            //to ensure that your data request is handled as a transaction
+            //To ensure that your data request is handled as a transaction
             //   we will encase all controller action within a transaction
             using(var context = new NorthwindContext())
             {
-                //trasaction code
+                //transaction code
                 return context.Regions.ToList();
             }
-            
+
         }
 
-        //method #2 will return a SPECIFIC region based on its Pkey
+        //method that will return a specific region record based on its pkey
         public Region Regions_FindByID(int regionid)
         {
-            //need to connect to the context class, that will handle the data request
+            //connect to the context class that will handle the data request
             //most of CRUD requires using a transaction
-            //to ensure that your data request is handled as a transaction
+            //To ensure that your data request is handled as a transaction
             //   we will encase all controller action within a transaction
             using (var context = new NorthwindContext())
             {
-                //trasaction code
+                //transaction code
                 return context.Regions.Find(regionid);
             }
 

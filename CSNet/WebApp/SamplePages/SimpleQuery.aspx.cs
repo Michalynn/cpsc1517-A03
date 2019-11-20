@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -26,45 +27,44 @@ namespace WebApp.SamplePages
             //validate the input
             if (string.IsNullOrEmpty(RegionIdArg.Text))
             {
-                MessageLabel.Text = "Enter a RegionID value.";
+                MessageLabel.Text = "Enter a region id value.";
             }
             else
             {
-                //make sure that its an int
                 int regionid = 0;
                 if (!int.TryParse(RegionIdArg.Text, out regionid))
                 {
-                    MessageLabel.Text = "RegionID must be a WHOLE number.";
+                    MessageLabel.Text = "Region id must be a whole number.";
                 }
                 else
                 {
                     if (regionid < 1)
                     {
-                        MessageLabel.Text = "RegionID must be a WHOLE number greater than zero.";
+                        MessageLabel.Text = "Region id must be a whole number greater than 0.";
                     }
                     else
                     {
                         
-                        //anytime you plan on leaving your webapp project
-                        //   to go to another project, you MUST use "try/catch"
-                        try
-                        {
-                            //standard lookup of data (if its valid)
-                            //STEPS:
-                            //   Create a receiving data variable
-                            //   Create an instance of the controller class you are
-                            //      going to make your request to 
-                            //     issue your request
-                            //     check your results
-                            //  a) List<T> use .Count
-                            //  b) Single record use == null
-                            // Display according to your results
+                        //any time you plan on leaving your web app project
+                        //   to go to another project, you MUST use try/catch
+                        //try
+                        //{
+                            //standard lookup of data
+                            //steps
+                            //   create an receiving data variable
+                            //   create an instance of the controller class you are
+                            //     go to make your request to
+                            //   issue your request
+                            //   check your results
+                            //      a)List<T> use .Count
+                            //      b)single record use == null
+                            //   display according to your results
                             Region info = null;
                             RegionController sysmgr = new RegionController();
                             info = sysmgr.Regions_FindByID(regionid);
                             if (info == null)
                             {
-                                MessageLabel.Text = "RegionID not found";
+                                MessageLabel.Text = "Region ID not found.";
                                 RegionID.Text = "";
                                 RegionDescription.Text = "";
                             }
@@ -73,15 +73,15 @@ namespace WebApp.SamplePages
                                 RegionID.Text = info.RegionID.ToString();
                                 RegionDescription.Text = info.RegionDescription;
                             }
-                        }
-                        catch (Exception ex)
-                        {
-
-                            MessageLabel.Text = ex.Message;
-                        }
+                        //}
+                        //catch (Exception ex)
+                        //{
+                        //    MessageLabel.Text = ex.Message;
+                        //}
                     }
                 }
-            }  
+            }
+            
         }
     }
 }

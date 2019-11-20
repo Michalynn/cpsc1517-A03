@@ -53,7 +53,8 @@
                         <li><a runat="server" href="~/">Home</a></li>
                         <li><a runat="server" href="~/About">About</a></li>
                         <li><a runat="server" href="~/Contact">Contact</a></li>
-                        <li><a runat="server" href="~/SamplePages/SimpleQuery">Simple Query</a></li>
+                        <li><a runat="server" href="~/SamplePages/SimpleQuery">Simple query</a></li>
+                        <li><a runat="server" href="~/SamplePages/SqlQuery">Sql Query</a></li>
                     </ul>
                 </div>
             </div>

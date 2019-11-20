@@ -5,7 +5,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6BB98640-C70A-4939-B2BA-0140DD14922A}</ProjectGuid>
+    <ProjectGuid>{95961E1B-0BDA-41F0-BA8A-0FB9ACF525A6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>NorthwindSystem</RootNamespace>
@@ -60,7 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NorthwindSystem.Data\NorthwindSystem.Data.csproj">
-      <Project>{0030ab34-7afa-4cac-b04d-4fa87b54e713}</Project>
+      <Project>{11942489-54e2-4ae0-985d-d9b85ef40cc7}</Project>
       <Name>NorthwindSystem.Data</Name>
     </ProjectReference>
   </ItemGroup>

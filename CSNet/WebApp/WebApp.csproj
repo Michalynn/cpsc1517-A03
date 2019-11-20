@@ -9,7 +9,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{AF355AFF-7D86-442B-943D-434C5AD113D3}</ProjectGuid>
+    <ProjectGuid>{D9B5395E-D118-4BAB-8A5F-F3B743B54C2A}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -133,7 +133,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="SamplePages\SimpleQuery.aspx" />
-    <Content Include="SamplePages\SQLQuery.aspx" />
+    <Content Include="SamplePages\SqlQuery.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -204,12 +204,12 @@
     <Compile Include="SamplePages\SimpleQuery.aspx.designer.cs">
       <DependentUpon>SimpleQuery.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SamplePages\SQLQuery.aspx.cs">
-      <DependentUpon>SQLQuery.aspx</DependentUpon>
+    <Compile Include="SamplePages\SqlQuery.aspx.cs">
+      <DependentUpon>SqlQuery.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="SamplePages\SQLQuery.aspx.designer.cs">
-      <DependentUpon>SQLQuery.aspx</DependentUpon>
+    <Compile Include="SamplePages\SqlQuery.aspx.designer.cs">
+      <DependentUpon>SqlQuery.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -249,11 +249,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NorthwindSystem.Data\NorthwindSystem.Data.csproj">
-      <Project>{0030ab34-7afa-4cac-b04d-4fa87b54e713}</Project>
+      <Project>{11942489-54e2-4ae0-985d-d9b85ef40cc7}</Project>
       <Name>NorthwindSystem.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\NorthwindSystem\NorthwindSystem.csproj">
-      <Project>{6bb98640-c70a-4939-b2ba-0140dd14922a}</Project>
+      <Project>{95961e1b-0bda-41f0-ba8a-0fb9acf525a6}</Project>
       <Name>NorthwindSystem</Name>
     </ProjectReference>
   </ItemGroup>
@@ -270,9 +270,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>50899</DevelopmentServerPort>
+          <DevelopmentServerPort>55196</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:50899/</IISUrl>
+          <IISUrl>http://localhost:55196/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

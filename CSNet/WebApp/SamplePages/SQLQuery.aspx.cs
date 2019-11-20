@@ -1,4 +1,5 @@
 ﻿using NorthwindSystem.BLL;
+using NorthwindSystem.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Web.UI.WebControls;
 
 namespace WebApp.SamplePages
 {
-    public partial class SQLQuery : System.Web.UI.Page
+    public partial class SqlQuery : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -21,7 +22,7 @@ namespace WebApp.SamplePages
 
         protected void BindCategoryList()
         {
-            //This will be a standard look up for the Category Records
+            //this will be a standard lookup for the Category records
             try
             {
                 CategoryController sysmgr = new CategoryController();
@@ -30,25 +31,39 @@ namespace WebApp.SamplePages
                 info.Sort((x, y) => x.CategoryName.CompareTo(y.CategoryName));
                 CategoryList.DataSource = info;
                 CategoryList.DataTextField = nameof(Category.CategoryName);
-                CategoryList.DataTextField = nameof(Category.CategoryID);
+                CategoryList.DataValueField = nameof(Category.CategoryID);
                 CategoryList.DataBind();
-                CategoryList.Items.Insert(0,"select...");
+                CategoryList.Items.Insert(0, "select...");
             }
             catch (Exception ex)
             {
-
                 MessageLabel.Text = ex.Message;
             }
         }
+
         protected void Fetch_Click(object sender, EventArgs e)
         {
-            if (CategoryList.SelectedIndex==0)
+            if (CategoryList.SelectedIndex == 0)
             {
                 MessageLabel.Text = "Select a category to view its products";
             }
             else
             {
-                //standard look-up
+                //standard lookup
+                try
+                {
+                    ProductController sysmgr = new ProductController();
+                    List<Product> info = null;
+                    info = sysmgr.Products_FindByCategory(int.Parse(CategoryList.SelectedValue));
+                    info.Sort((x, y) => x.ProductName.CompareTo(y.ProductName));
+                    ProductList.DataSource = info;
+                    ProductList.DataBind();
+
+                }
+                catch (Exception ex)
+                {
+                    MessageLabel.Text = ex.Message;
+                }
             }
         }
     }

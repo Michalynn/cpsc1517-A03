@@ -7,13 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebApp.SamplePages
-{
-
-
-    public partial class SimpleQuery
-    {
-
+namespace WebApp.SamplePages {
+    
+    
+    public partial class SimpleQuery {
+        
         /// <summary>
         /// Label1 control.
         /// </summary>
@@ -22,7 +20,7 @@ namespace WebApp.SamplePages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label1;
-
+        
         /// <summary>
         /// RegionIdArg control.
         /// </summary>
@@ -31,7 +29,7 @@ namespace WebApp.SamplePages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox RegionIdArg;
-
+        
         /// <summary>
         /// Fetch control.
         /// </summary>
@@ -40,7 +38,7 @@ namespace WebApp.SamplePages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Fetch;
-
+        
         /// <summary>
         /// MessageLabel control.
         /// </summary>
@@ -49,7 +47,7 @@ namespace WebApp.SamplePages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label MessageLabel;
-
+        
         /// <summary>
         /// Label2 control.
         /// </summary>
@@ -58,7 +56,7 @@ namespace WebApp.SamplePages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label2;
-
+        
         /// <summary>
         /// RegionID control.
         /// </summary>
@@ -67,7 +65,7 @@ namespace WebApp.SamplePages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label RegionID;
-
+        
         /// <summary>
         /// Label4 control.
         /// </summary>
@@ -76,7 +74,7 @@ namespace WebApp.SamplePages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label4;
-
+        
         /// <summary>
         /// RegionDescription control.
         /// </summary>
