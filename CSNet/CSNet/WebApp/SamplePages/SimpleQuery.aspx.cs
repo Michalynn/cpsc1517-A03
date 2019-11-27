@@ -44,11 +44,11 @@ namespace WebApp.SamplePages
                     }
                     else
                     {
-
+                        
                         //any time you plan on leaving your web app project
                         //   to go to another project, you MUST use try/catch
-                        try
-                        {
+                        //try
+                        //{
                             //standard lookup of data
                             //steps
                             //   create an receiving data variable
@@ -73,11 +73,11 @@ namespace WebApp.SamplePages
                                 RegionID.Text = info.RegionID.ToString();
                                 RegionDescription.Text = info.RegionDescription;
                             }
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageLabel.Text = ex.Message;
-                        }
+                        //}
+                        //catch (Exception ex)
+                        //{
+                        //    MessageLabel.Text = ex.Message;
+                        //}
                     }
                 }
             }

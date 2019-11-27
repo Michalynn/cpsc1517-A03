@@ -66,5 +66,43 @@ namespace WebApp.SamplePages
                 }
             }
         }
+
+        protected void ProductList_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            //web controls on events get passed arguments DEPENDING on the control
+            //check your method header to see the argument class type
+            //since the arguments are in a class, use appropriate object referencing to 
+            //    obtain the data value required
+
+            //you MUST set the gridview page index property
+            //the new page index value is located in the supplied event arguments
+            ProductList.PageIndex = e.NewPageIndex;
+
+            //you must refresh your data collection
+            Fetch_Click(sender, new EventArgs());
+        }
+
+        protected void ProductList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //a gridview can be thought of as a table of indexed rows
+            //to access a piece of data of the gridview you need to reference the Row
+            //   of the gridview display collection
+            //   then you need to reference the data by using the appropriate data access
+            //   technique which depends on how the column is displaying the data
+            //we will limit are examples to Template with web controls
+            GridViewRow agvrow = ProductList.Rows[ProductList.SelectedIndex];
+
+            //to access the piece of data used the method .FindControl("xxxx") where xxxx
+            //   is the id of the control on the GridView
+            //syntax    (agvrow.FindControl("xxxxx") as controltype).controltypeaccess
+            //example for label
+            //(agvrow.FindControl("xxxxx") as Label).Text
+            //data is returned as a string
+            string productid = (agvrow.FindControl("ProductID") as Label).Text;
+
+            //pass the obtained data to another page
+            Response.Redirect("ReceivingPage.aspx?pid=" + productid);
+
+        }
     }
 }
