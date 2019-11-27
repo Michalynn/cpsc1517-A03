@@ -8,14 +8,18 @@ using System.Threading.Tasks;
 using NorthwindSystem.Data;
 using NorthwindSystem.DAL;
 using System.Data.SqlClient;  //needed  for SqlParameter class
+using System.ComponentModel;
 #endregion
 
 namespace NorthwindSystem.BLL
 {
+    [DataObject]
     public class ProductController
     {
+       
         #region Queries
         //lookup of data from the database using a non-primary key field
+        [DataObjectMethod(DataObjectMethodType.Select,false)]
         public List<Product> Products_FindByCategory(int categoryid)
         {
             using (var context = new NorthwindContext())

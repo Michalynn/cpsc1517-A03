@@ -33,8 +33,8 @@ namespace WebApp.NorthwindPages
             if (!Page.IsPostBack)
             {
                 BindProductList();
-                BindCategoryList();
-                BindSupplierList();
+                //BindCategoryList();
+                //BindSupplierList();
             }
         }
 
@@ -64,50 +64,50 @@ namespace WebApp.NorthwindPages
         }
 
         #region DropDown Loads
-        protected void BindCategoryList()
-        {
-            //this will be a standard lookup for the Category records
-            try
-            {
-                CategoryController sysmgr = new CategoryController();
-                List<Category> info = null;
-                info = sysmgr.Categories_List();
-                info.Sort((x, y) => x.CategoryName.CompareTo(y.CategoryName));
-                CategoryList.DataSource = info;
-                CategoryList.DataTextField = nameof(Category.CategoryName);
-                CategoryList.DataValueField = nameof(Category.CategoryID);
-                CategoryList.DataBind();
-                CategoryList.Items.Insert(0, "select...");
-            }
-            catch (Exception ex)
-            {
-                //using the specialized error handling DataList control
-                errormsgs.Add(GetInnerException(ex).ToString());
-                LoadMessageDisplay(errormsgs, "alert alert-danger");
-            }
-        }
-        protected void BindSupplierList()
-        {
-            //this will be a standard lookup for the Supplier records
-            try
-            {
-                SupplierController sysmgr = new SupplierController();
-                List<Supplier> info = null;
-                info = sysmgr.Supplier_List();
-                info.Sort((x, y) => x.ContactName.CompareTo(y.ContactName));
-                SupplierList.DataSource = info;
-                SupplierList.DataTextField = nameof(Supplier.ContactName);
-                SupplierList.DataValueField = nameof(Supplier.SupplierID);
-                SupplierList.DataBind();
-                SupplierList.Items.Insert(0, "select...");
-            }
-            catch (Exception ex)
-            {
-                //using the specialized error handling DataList control
-                errormsgs.Add(GetInnerException(ex).ToString());
-                LoadMessageDisplay(errormsgs, "alert alert-danger");
-            }
-        }
+        //protected void BindCategoryList()
+        //{
+        //    //this will be a standard lookup for the Category records
+        //    try
+        //    {
+        //        CategoryController sysmgr = new CategoryController();
+        //        List<Category> info = null;
+        //        info = sysmgr.Categories_List();
+        //        info.Sort((x, y) => x.CategoryName.CompareTo(y.CategoryName));
+        //        CategoryList.DataSource = info;
+        //        CategoryList.DataTextField = nameof(Category.CategoryName);
+        //        CategoryList.DataValueField = nameof(Category.CategoryID);
+        //        CategoryList.DataBind();
+        //        CategoryList.Items.Insert(0, "select...");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        //using the specialized error handling DataList control
+        //        errormsgs.Add(GetInnerException(ex).ToString());
+        //        LoadMessageDisplay(errormsgs, "alert alert-danger");
+        //    }
+        //}
+        //protected void BindSupplierList()
+        //{
+        //    //this will be a standard lookup for the Supplier records
+        //    try
+        //    {
+        //        SupplierController sysmgr = new SupplierController();
+        //        List<Supplier> info = null;
+        //        info = sysmgr.Supplier_List();
+        //        info.Sort((x, y) => x.ContactName.CompareTo(y.ContactName));
+        //        SupplierList.DataSource = info;
+        //        SupplierList.DataTextField = nameof(Supplier.ContactName);
+        //        SupplierList.DataValueField = nameof(Supplier.SupplierID);
+        //        SupplierList.DataBind();
+        //        SupplierList.Items.Insert(0, "select...");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        //using the specialized error handling DataList control
+        //        errormsgs.Add(GetInnerException(ex).ToString());
+        //        LoadMessageDisplay(errormsgs, "alert alert-danger");
+        //    }
+        //}
         protected void BindProductList()
         {
             //this will be a standard lookup for the Product records

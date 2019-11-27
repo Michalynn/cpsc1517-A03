@@ -23,7 +23,7 @@ namespace NorthwindSystem.BLL
                 return context.Suppliers.ToList();
             }
         }
-
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
         public Supplier Supplier_Get(int supplierid)
         {
             using (var context = new NorthwindContext())
