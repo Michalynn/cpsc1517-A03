@@ -74,24 +74,22 @@
                   <asp:Label ID="Label3" runat="server" Text="Supplier"
                      AssociatedControlID="SupplierList"></asp:Label>
                 <asp:DropDownList ID="SupplierList" runat="server" Width="350px" 
-                    DataSourceID="SupplierListODS"
-                    DataTextField="SupplierID" 
+                    DataSourceID="SupplierListODS" 
+                    DataTextField="CompanyName" 
                     DataValueField="SupplierID"
-                    AppendDataBoundItems="true">
-
-                    <asp:ListItem Value="0">Select...</asp:ListItem>
+                     AppendDataBoundItems="true">
+                    <asp:ListItem Value="0">Select ...</asp:ListItem>
                 </asp:DropDownList> 
 
                     <asp:Label ID="Label6" runat="server" Text="Category"
                      AssociatedControlID="CategoryList"></asp:Label>
-                <asp:DropDownList ID="CategoryList" runat="server" 
-                    Width="350px" 
+                <asp:DropDownList ID="CategoryList" runat="server" Width="350px" 
                     DataSourceID="CategoryListODS" 
                     DataTextField="CategoryName" 
                     DataValueField="CategoryID"
-                    AppendDataBoundItems="true">
+                     AppendDataBoundItems="true">
 
-                    <asp:ListItem Value="0">Select...</asp:ListItem>
+                    <asp:ListItem Value="0">Select ...</asp:ListItem>
                 </asp:DropDownList> 
                
                     <asp:Label ID="Label7" runat="server" Text="Quantity/Unit"
@@ -130,7 +128,8 @@
     <asp:ObjectDataSource ID="SupplierListODS" runat="server" 
         OldValuesParameterFormatString="original_{0}" 
         SelectMethod="Supplier_List" 
-        TypeName="NorthwindSystem.BLL.SupplierController"></asp:ObjectDataSource>
+        TypeName="NorthwindSystem.BLL.SupplierController">
 
+    </asp:ObjectDataSource>
     <script src="../Scripts/bootwrap-freecode.js"></script>
 </asp:Content>

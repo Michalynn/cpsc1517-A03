@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 #region Additional Namespaces
 using NorthwindSystem.Data;
 using NorthwindSystem.DAL;
-using System.ComponentModel; //is required to expose items for ODS
+using System.ComponentModel; //required to expose items for ODS
 #endregion
 
 namespace NorthwindSystem.BLL
@@ -17,8 +17,8 @@ namespace NorthwindSystem.BLL
     public class CategoryController
     {
         //to expose a method for the ODS wizard
-        // use the DataObject method annotation
-        //this annotation goes infront of the method to the expose
+        //  use the DataObjectMethod annotation
+        //this annotation goes in front of the method to exposed
         //NOT all methods need to be exposed
         [DataObjectMethod(DataObjectMethodType.Select,false)]
         public List<Category> Categories_List()
@@ -34,10 +34,10 @@ namespace NorthwindSystem.BLL
             }
 
         }
-        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        [DataObjectMethod(DataObjectMethodType.Select,false)]
         public Category Categories_FindByID(int categoryid)
         {
-            using (var context = new NorthwindContext())
+            using(var context = new NorthwindContext())
             {
                 return context.Categories.Find(categoryid);
             }

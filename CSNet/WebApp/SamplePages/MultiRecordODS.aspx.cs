@@ -44,7 +44,7 @@ namespace WebApp.SamplePages
 
         protected void FetchCategoryProducts_Click(object sender, EventArgs e)
         {
-            //optional coding 
+            //opitional coding
             if (CategoryList.SelectedIndex == 0)
             {
                 Message.Text = "Select a category to view the products";

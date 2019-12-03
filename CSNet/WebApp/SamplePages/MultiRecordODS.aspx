@@ -22,11 +22,10 @@
             DataTextField="CategoryName" 
             DataValueField="CategoryID" AppendDataBoundItems="True">
 
-            <asp:ListItem Value="0">Select...</asp:ListItem>
+            <asp:ListItem Value="0">select ....</asp:ListItem>
         </asp:DropDownList>
         &nbsp;&nbsp;
-        <asp:LinkButton ID="FetchCategoryProducts" 
-            runat="server" 
+        <asp:LinkButton ID="FetchCategoryProducts" runat="server" 
             OnClick="FetchCategoryProducts_Click">Fetch</asp:LinkButton>
         <br />
     </div>
@@ -34,7 +33,7 @@
     <div class="row">
         <asp:GridView ID="ProductList" runat="server"
             AutoGenerateColumns="False"
-            OnSelectedIndexChanged="ProductList_SelectedIndexChanged" 
+            OnSelectedIndexChanged="ProductList_SelectedIndexChanged"
             DataSourceID="ProductListODS"
              GridLines="Horizontal" BorderStyle="None" CssClass="table table-striped">
               <Columns>
@@ -53,14 +52,12 @@
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Supplier">
                     <ItemTemplate>
-                       <%--<asp:Label ID="SupplierID" runat="server" 
-                            Text='<%# Eval("SupplierID") %>'></asp:Label>--%>
-                        <asp:DropDownList ID="SupplierList"
-                            runat="server" 
+                     
+                        <asp:DropDownList ID="SupplierList" runat="server" 
                             DataSourceID="SupplierListODS" 
                             DataTextField="CompanyName" 
                             DataValueField="SupplierID"
-                            selectedvalue='<%# Eval("SupplierID") %>'
+                            selectedvalue ='<%# Eval("SupplierID") %>'
                              Enabled="false">
                         </asp:DropDownList>
                     </ItemTemplate>
@@ -68,14 +65,14 @@
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Category">
                     <ItemTemplate>
-                         <asp:Label ID="CategoryID" runat="server" 
-                            Text='<%# Eval("CategoryID") %>'></asp:Label>
-                        <asp:DropDownList ID="CategoryListGV" runat="server"
-                            DataSourceID="CategoryListODS"
-                            DataTextField="CategoryName"
+                        
+                        <asp:DropDownList ID="CategoryListGV" runat="server" 
+                            DataSourceID="CategoryListODS" 
+                            DataTextField="CategoryName" 
                             DataValueField="CategoryID"
-                            selectedvalue='<%# Eval("CategoryID") %>'
-                            Enabled="false">
+                             selectedvalue ='<%# Eval("CategoryID") %>'
+                             Enabled="false">
+
                         </asp:DropDownList>
                     </ItemTemplate>
                     <ItemStyle HorizontalAlign="Center"></ItemStyle>
@@ -96,14 +93,14 @@
                 </asp:TemplateField>
             </Columns>
             <EmptyDataTemplate>
-                there is no data to be displayed at this time
-            </EmptyDataTemplate>  
+                there is no data to display at this time
+            </EmptyDataTemplate>
           
         </asp:GridView>
         <br /><br />
         <asp:Label ID="Message" runat="server" ></asp:Label>
     </div>
-    <asp:ObjectDataSource ID="CategoryListODS" runat="server"
+    <asp:ObjectDataSource ID="CategoryListODS" runat="server" 
         OldValuesParameterFormatString="original_{0}" 
         SelectMethod="Categories_List" 
         TypeName="NorthwindSystem.BLL.CategoryController">
@@ -114,10 +111,8 @@
         TypeName="NorthwindSystem.BLL.ProductController">
         <SelectParameters>
             <asp:ControlParameter ControlID="CategoryList" 
-                PropertyName="SelectedValue" 
-                DefaultValue="0" 
-                Name="categoryid" 
-                Type="Int32">
+                PropertyName="SelectedValue" DefaultValue="0" 
+                Name="categoryid" Type="Int32">
             </asp:ControlParameter>
         </SelectParameters>
     </asp:ObjectDataSource>
